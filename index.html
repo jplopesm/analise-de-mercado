@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de mercado</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20px;  
+        }
+
+        h1{
+            text-align: center;
+        }
+        
+        .container{
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        form{
+            margin-bottom: 20px;
+        }
+
+        label{
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+
+    </style>
+</head>
+<body> 
+    <div class="container"></div>
+    <h1>Análise de Mercado</h1>
+    <form>
+        <label for="concorrencia">Concorrência:</label>
+      <input type="text" id="concorrencia" name="concorrencia">
+
+      <label for="tendencias">Tendências de Mercado:</label>
+      <textarea id="tendencias" name="tendencias"></textarea>
+
+      <label for="comportamento">Comportamento dos Consumidores:</label>
+      <textarea id="comportamento" name="comportamento"></textarea>
+
+      <input type="submit" value="Gerar Relatório">
+    </form>
+    <h2>Relatório</h2>
+    <table>
+        <tr>
+            <th>Concorrência</th>
+            <th>Tendências de Mercado</th>
+            <th>Comportamento dos Consumidores</th>
+          </tr>
+        </thead>
+        <tbody id="relatorio-body">
+        </tbody>
+      </table>
+    </div>
+  
+    <script>
+      // Função para gerar o relatório e obter os valores dos campos de formulário, USADA PARA SALVAR O QUE FOI DIGITADO
+      function gerarRelatorio() {
+        var concorrencia = document.getElementById('concorrencia').value;
+        var tendencias = document.getElementById('tendencias').value;
+        var comportamento = document.getElementById('comportamento').value;
+  
+        var relatorioBody = document.getElementById('relatorio-body');
+        var newRow = relatorioBody.insertRow();
+  
+        var concorrenciaCell = newRow.insertCell(0);
+        var tendenciasCell = newRow.insertCell(1);
+        var comportamentoCell = newRow.insertCell(2);
+  
+        concorrenciaCell.innerHTML = concorrencia;
+        tendenciasCell.innerHTML = tendencias;
+        comportamentoCell.innerHTML = comportamento;
+      }
+  
+      var form = document.querySelector('form');
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        gerarRelatorio();
+      });
+    </script>
+    </table>
+</body>
+</html>
